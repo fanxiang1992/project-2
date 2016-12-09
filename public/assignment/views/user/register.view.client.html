@@ -1,0 +1,34 @@
+
+<div class="container">
+  <div ng-show="model.error" class="alert alert-danger" role="alert">
+    {{model.error}}
+  </div>
+
+  <h1>Register</h1>
+
+  <h3>Account Information(Mandatory)</h3>
+  <input ng-model="model.user.username" type="text"
+  class="form-control" placeholder="username"/>
+  <input ng-model="model.user.password" type="password"
+  class="form-control" placeholder="password"/>
+  <input ng-model="model.user.password2" type="password"
+  class="form-control" placeholder="verify password"/>
+  <input ng-model="model.user.type" type="text" 
+  class="form-control" placeholder="please enter 'student' or 'faculty' as identity"/>
+
+  <h3>Personal Information (Optional)  </h3>
+  <input ng-model="model.user.firstName" type="text" 
+  class="form-control" placeholder="firstname"/>
+  <input ng-model="model.user.lastName" type="text" 
+  class="form-control" placeholder="lastname"/>
+  <input ng-model="model.user.address" type="text" 
+  class="form-control" placeholder="address"/>
+  <input ng-model="model.user.email" type="text" 
+  class="form-control" placeholder="email address"/>
+
+
+  <a class="btn btn-primary btn-block"
+  ng-click="model.register(model.user)">Register</a>
+  <a class="btn btn-danger  btn-block"
+  href="#/login">Cancel</a>
+</div>
