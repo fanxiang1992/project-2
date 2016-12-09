@@ -1,0 +1,70 @@
+
+	<div class="container-fluid course-new">
+		<div class="col-sm-4 hidden-xs">
+			<nav class="navbar navbar-default navbar-blue">
+				<div class="container-fluid col-xs-12">
+					<div class="navbar-white-text col-xs-11"> Teaching Courses
+						<a class="navbar-link pull-right right-navbar-link" href="#/user/{{model.userId}}/course/new">
+							<span class="gglyphicon glyphicon-plus navbar-plus white-text" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			</nav>
+			<ul class="content-list col-xs-12">
+        <li class="row" ng-repeat="course in model.courses">
+          <a href="#/user/{{model.userId}}/course/{{course._id}}/page" class="col-xs-10">{{course.name}}-{{course.sectionNum}}</a>
+          <a href="#/user/{{model.userId}}/course/{{course._id}}" class="text-right col-xs-2">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+			</ul>
+		</div>
+		<div class="col-sm-8 col-xs-12">
+			<nav class="navbar navbar-default navbar-blue">
+				<div class="container-fluid col-xs-12">
+					<a class="navbar-brand col-xs-1" href="#/user/{{model.userId}}/course">
+						<span class="glyphicon glyphicon-chevron-left white-text" aria-hidden="true"></span>
+					</a>
+					<div class="navbar-white-text col-xs-11"> New Course
+						<a class="navbar-link pull-right right-navbar-link" ng-click="model.createCourse(model.course)" href="">
+							<span class="glyphicon glyphicon-ok navbar-ok white-text" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			</nav>
+			<div class="contianer col-xs-12">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+          {{model.error}}
+        </div>
+				<form>
+				<div class="form-group">
+					<label for="username">Name</label>
+					<input ng-model="model.course.name" type="text" class="form-control" id="name" placeholder="Name">
+				</div>
+        <div class="form-group">
+          <label for="sectionNum">SectionNum</label>
+          <textarea ng-model="model.course.sectionNum" type="text" class="form-control" id="sectionNum" placeholder="Section#"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="date">Day and Time (24-hour clock)</label>
+          <textarea ng-model="model.course.date" type="text" class="form-control" id="date" placeholder="e.g. MWT 13:30 - 3:05"></textarea>
+        </div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea ng-model="model.course.description" rows="4" cols="10" class="form-control" id="description" placeholder="Description"></textarea>
+				</div>
+			</form>
+			</div>
+			
+
+		</div>
+	</div>
+<nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-right pull-right">
+				<li><a class="navbar-link" href="#/user/{{model.userId}}">
+				<span class="glyphicon glyphicon-user white-text" aria-hidden="true"></span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>

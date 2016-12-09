@@ -6,6 +6,24 @@ module.exports = function (app, model) {
   app.get('/api/user/:userId/course', findCoursesForUser);
   app.put('/api/course/:courseId', updateCourse);
   app.delete('/api/course/:courseId', removeCourse);
+  app.get('/api/course/:courseId', findCourseById);
+  app.get('/api/course', findAllCourses);
+
+
+  function findAllCourses(req, res) {
+    model.courseModel.findAllCourses().then(
+      function (courses) {
+        if(courses){
+          res.json(courses);
+        }
+        else{
+          res.send('0');
+        }
+      },
+      function(error){
+        res.sendStatus(400).send(error);
+      })
+  }
 
 
 
@@ -44,6 +62,21 @@ module.exports = function (app, model) {
         res.sendStatus(400).send(error);
       }
       );
+  }
+
+  function findCourseById(req, res) {
+    var wid = req.params.courseId;
+    model.courseModel.findCourseById(wid).then(
+      function (course) {
+        if(course) {
+          res.send(course);
+        }else{
+          res.send('0');
+        }
+      },
+      function(error) {
+        res.sendStatus(400).send(error);
+      })
   }
 
 

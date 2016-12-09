@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-blue navbar-fixed-top">
+  <div class="container-fluid col-xs-12">
+    <a class="navbar-brand col-xs-1" ng-href="#/user/{{model.userId}}/course/all">
+      <span class="glyphicon glyphicon-chevron-left white-text" aria-hidden="true"></span>
+    </a>
+    <div class="navbar-white-text col-xs-11"> Course Details
+    </div>
+  </div>
+</nav>
+
+<div class="contianer col-xs-12">
+  <form>
+    <div class="form-group">
+      <label for="coursename">Course Name</label>
+      <p>{{model.course.name}} </p>
+    </div>
+    <div class="form-group">
+      <label for="course-description">Section#</label>
+      <p> {{model.course.sectionNum}} </p>
+    </div>
+    <div class="form-group">
+      <label for="course-description">Instructor Name</label>
+      <p> {{model.course.instructor}} </p>
+    </div>
+    <div class="form-group">
+      <label for="course-description">Instructor Email</label>
+      <p> {{model.course.instructoremail}} </p>
+    </div>
+    <div class="form-group">
+      <label for="course-description">Day and Time</label>
+      <p> {{model.course.date}} </p>
+    </div>
+    <div class="form-group">
+      <label for="course-description">Course Description</label>
+      <p> {{model.course.description}} </p>
+    </div>
+  </form>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right pull-right">
+      <li>
+        <a class="navbar-link" href="#/user/{{model.userId}}">
+          <span class="glyphicon glyphicon-user white-text" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

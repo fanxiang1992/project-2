@@ -17,12 +17,13 @@ module.exports = function() {
 
 
     var userModel = require("./user/user.model.server.js")();
+    var courseModel = require("./course/course.model.server.js")();
  
 
 
     var model = {
         userModel: userModel,
-
+        courseModel: courseModel,
     };
 
     return model;

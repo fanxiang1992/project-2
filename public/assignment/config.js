@@ -32,17 +32,33 @@
       controller: "CourseListController",
       controllerAs: "model"
     })
-    // .when("/user/:uid/website/new", {
-    //   templateUrl: "views/website/website-new.view.client.html",
-    //   controller: "WebsiteNewController",
-    //   controllerAs: "model"
 
-    // })
-    // .when("/user/:uid/website/:wid", {
-    //   templateUrl: "views/website/website-edit.view.client.html",
-    //   controller: "WebsiteEditController",
-    //   controllerAs: "model"
-    // })
+
+    .when("/user/:uid/course/new", {
+      templateUrl: "views/course/course-new.view.client.html",
+      controller: "CourseNewController",
+      controllerAs: "model"
+
+    })
+    .when("/user/:uid/course/all", {
+      templateUrl: "views/course/course-all.view.client.html",
+      controller: "CourseAllController",
+      controllerAs: "model"
+    })
+
+
+    .when("/user/:uid/course/:cid", {
+      templateUrl: "views/course/course-edit.view.client.html",
+      controller: "CourseEditController",
+      controllerAs: "model"
+    })
+
+    .when("/user/:uid/course/:cid/details", {
+      templateUrl: "views/course/course-details.view.client.html",
+      controller: "CourseDetailsController",
+      controllerAs: "model"
+    })
+    
 
     // .when("/user/:uid/website/:wid/page", {
     //   templateUrl: "views/page/page-list.view.client.html",

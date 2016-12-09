@@ -1,13 +1,9 @@
-
 <nav class="navbar navbar-default navbar-blue navbar-fixed-top">
   <div class="container-fluid col-xs-12">
     <a class="navbar-brand col-xs-1" ng-href="#/user/{{model.userId}}">
       <span class="glyphicon glyphicon-chevron-left white-text" aria-hidden="true"></span>
     </a>
-    <div class="navbar-white-text col-xs-11"> My Courses
-      <a class="navbar-link pull-right right-navbar-link" ng-href="#/user/{{model.userId}}/course/new">
-        <span ng-show="model.user.type == 'faculty'" class="gglyphicon glyphicon-plus navbar-plus white-text" aria-hidden="true"></span>
-      </a>
+    <div class="navbar-white-text col-xs-11"> All Courses
     </div>
   </div>
 </nav>
@@ -16,9 +12,6 @@
   <li ng-repeat="course in model.courses" class="row">
     <a href="#/user/{{model.userId}}/course/{{course._id}}/details" class="col-xs-11">
       {{course.name}}-{{course.sectionNum}}
-    </a>
-    <a href="#/user/{{model.userId}}/course/{{course._id}}" class="text-right col-xs-1">
-      <span ng-show="model.user.type == 'faculty'" class="glyphicon glyphicon-cog"></span>
     </a>
   </li>
 </ul>
@@ -34,6 +27,4 @@
     </ul>
   </div>
 </nav>
-
-
 

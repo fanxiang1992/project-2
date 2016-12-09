@@ -1,7 +1,7 @@
 
 module.exports = function () {
     var mongoose = require("mongoose");
-    var SectionSchema = require("../section/section.schema.server.js")(mongoose);
+    var CourseSchema = require("../course/course.schema.server.js")(mongoose);
     var UserSchema = mongoose.Schema({
         username: String,
         password: String,
@@ -11,7 +11,7 @@ module.exports = function () {
         address: String,
         dob: Date,
         type: String,
-        sections: [SectionSchema], 
+        course: [CourseSchema], 
         dateCreated: Date
     },
      {collection: "user"});

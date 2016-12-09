@@ -9,8 +9,9 @@
       findCoursesForUser: findCoursesForUser,
       createCourse: createCourse,
       updateCourse: updateCourse,
-      deleteCourse: deleteCourse
-
+      deleteCourse: deleteCourse,
+      findCourseById: findCourseById,
+      findAllCourses: findAllCourses
     };
     return api;
 
@@ -33,8 +34,19 @@
 
     function deleteCourse(wid) {
       var url = '/api/course/' + wid;
-      return $http.delete(url)
-      
+      return $http.delete(url);
     }
+
+    function findCourseById(wid) {
+      var url = '/api/course/' + wid;
+      return $http.get(url);
+    }
+
+    function findAllCourses() {
+      console.log("checkpoint");
+      var url = '/api/course';
+      return $http.get(url);
+    }
+
   }
 })();

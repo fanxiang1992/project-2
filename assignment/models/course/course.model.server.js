@@ -8,10 +8,15 @@ module.exports = function() {
         createCourseForUser: createCourseForUser,
         findCoursesForUser:findCoursesForUser,
         deleteCourse:deleteCourse,
-        //findWebsiteById:findWebsiteById,
-        updateCourse:updateCourse
+        findCourseById:findCourseById,
+        updateCourse:updateCourse,
+        findAllCourses: findAllCourses
     };
     return api;
+
+    function findAllCourses() {
+      return CourseModel.find();
+    }
 
 
     function updateCourse(courseId,course) {
@@ -22,20 +27,22 @@ module.exports = function() {
       },
       {
         name: course.name,
+        sectionNum: course.sectionNum,
+        date: course.date,
         description: course.description
       }
       );
     }
 
-    // function findWebsiteById(websiteId) {
-    //     return WebsiteModel
-    //         .findById(websiteId);
-    // }
+    function findCourseById(courseId) {
+        return CourseModel
+            .findById(courseId);
+    }
 
     function deleteCourse(courseId) {
         return CourseModel
             .remove({
-                _id:CourseId
+                _id:courseId
             })
     };
 
@@ -46,7 +53,7 @@ module.exports = function() {
             });
     }
 
-    function createCourseForUser(userId,course) {
+    function createCourseForUser(userId, course) {
         course["_user"] = userId;
         return CourseModel.create(course);
     }
