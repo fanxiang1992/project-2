@@ -17,10 +17,16 @@
       controllerAs: "model"
     })
     .when("/user/:uid", {
+      templateUrl: "views/home_page_after_login/student.view.client.html",
+      controller: "StudentController",
+      controllerAs: "model"
+    })
+    .when("/user/:uid/profile", {
       templateUrl: "views/user/profile.view.client.html",
       controller: "ProfileController",
       controllerAs: "model"
     })
+
     .when("/user/:uid/website", {
       templateUrl: "views/website/website-list.view.client.html",
       controller: "WebsiteListController",
