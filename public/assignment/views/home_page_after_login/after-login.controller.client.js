@@ -1,12 +1,10 @@
 (function(){
   angular.module("WebAppMaker")
-  .controller("StudentController", StudentController);
+  .controller("AfterLoginController", AfterLoginController);
 
-  function StudentController($routeParams, UserService) {
+  function AfterLoginController($routeParams, UserService) {
     var vm = this;
     vm.userId = $routeParams.uid;
-    vm.updateUser = updateUser;
-    vm.unregisterUser = unregisterUser;
 
     function init() {
       UserService.findUserById(vm.userId)
@@ -20,6 +18,5 @@
       });
     }
     init();
-
   }
 })();

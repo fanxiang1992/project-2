@@ -18,7 +18,6 @@
         if(user === '0') {
           vm.error = "No such user";
         } else {
-          console.log(user._id);
           $location.url("/user/" + user._id);
         }
       })
