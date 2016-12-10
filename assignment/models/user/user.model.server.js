@@ -41,7 +41,8 @@ module.exports = function() {
         firstName:user.firstName,
         lastName: user.lastName,
         email: user.email,
-        address: user.address
+        address: user.address,
+        courseTake: user.courseTake
       }
       );
     }

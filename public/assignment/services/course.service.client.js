@@ -43,7 +43,6 @@
     }
 
     function findAllCourses() {
-      console.log("checkpoint");
       var url = '/api/course';
       return $http.get(url);
     }

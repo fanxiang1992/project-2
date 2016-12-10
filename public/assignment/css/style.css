@@ -6,6 +6,17 @@ body {
     padding-top: 60px;
 }
 
+.header {
+    background-color: #337ab7
+}
+
+.header-icon {
+    background-color: #337ab7;
+    font-size: 15px;
+    color: white;
+    padding-top: 3px;
+}
+
 .navbar-plus {
 	font-size: 24px;
 	font-weight: bold;

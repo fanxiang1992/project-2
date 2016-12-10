@@ -35,9 +35,14 @@
       <p> {{model.course.description}} </p>
     </div>
   </form>
+
+  <span ng-show="model.user.type == 'student'">
+    <a class="btn btn-primary btn-block"
+    ng-click="model.addClass(course)">Registe Class</a>
+    <a class="btn btn-primary btn-block"
+    ng-click="model.dropClass(course)" ng-show="model.haveClass(course)">Drop Class</a>
+  </span>
 </div>
-
-
 
 <nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
   <div class="container-fluid">

@@ -12,7 +12,7 @@
   </div>
 </nav>
 
-<ul class="content-list container">
+<ul class="content-list container" ng-show="model.user.type == 'faculty'">
   <li ng-repeat="course in model.courses" class="row">
     <a href="#/user/{{model.userId}}/course/{{course._id}}/details" class="col-xs-11">
       {{course.name}}-{{course.sectionNum}}
@@ -22,6 +22,16 @@
     </a>
   </li>
 </ul>
+
+<ul class="content-list container" ng-show="model.user.type == 'student'">
+  <li ng-repeat="course in model.user.courseTake" class="row">
+    <a href="" class="col-xs-11">
+      {{course.name}}-{{course.sectionNum}}
+    </a>
+  </li>
+</ul>
+
+
 
 <nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
   <div class="container-fluid">

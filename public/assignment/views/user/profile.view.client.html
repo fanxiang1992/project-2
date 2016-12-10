@@ -1,7 +1,13 @@
 
 <nav class="navbar navbar-default navbar-blue navbar-fixed-top">
   <div class="container-fluid col-xs-12">
+    <span class="navbar-brand navbar-default header">
+      <a href="#/user/{{model.userId}}">
+           <span class="glyphicon glyphicon-chevron-left pull-left header-icon"></span>
+      </a>
+    </span>
     <div class="navbar-white-text col-xs-11"> Profile
+      
       <a class="navbar-link pull-right right-navbar-link" ng-click="model.updateUser()" href="">
         <span class="glyphicon glyphicon-ok navbar-ok white-text" aria-hidden="true"></span>
       </a>
@@ -9,10 +15,18 @@
   </div>
 </nav>
 
+<div class="container-fluid col-xs-12">
+  <div class="navbar-white-text col-xs-11">
+    <a class="navbar-link pull-right right-navbar-link btn btn-danger" href="#/login">
+    Logout
+    </a>
+  </div>
+</div>
+
+
 
 <div class="container">
   <h1>Profile</h1>
-
   <form>
     <div class="form-group">
       <label for="username">Welcome: {{model.user.username}}</label>
@@ -33,16 +47,9 @@
       <label for="last-name">Address</label>
       <input ng-model="model.user.address" type="text" class="form-control" id="last-name" placeholder="Enter your address">
     </div>
-
-{{model.user.type}}
-
   </form>
-
-  <a class="btn btn-primary btn-block"
-  ng-href="#/user/{{model.userId}}/website">Websites</a>
-  <a class="btn btn-danger btn-block"
-  href="#/login">Logout</a>
 </div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">

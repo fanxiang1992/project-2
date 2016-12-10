@@ -16,8 +16,6 @@
       });
     }
     init();
-
-
   }
 })();
 
@@ -142,6 +140,10 @@
     vm.userId = $routeParams['uid'];
     vm.courseId = $routeParams.cid;
 
+    vm.addClass = addClass;
+    vm.dropClass = dropClass;
+    vm.haveClass = haveClass;
+
     function init() {
       UserService.findUserById(vm.userId).success(function(user){
         vm.user = user;
@@ -151,5 +153,73 @@
       });
     }
     init();
+
+
+    function haveClass(course) {
+      var templ = vm.user.courseTake;
+      var result = false;
+      for(var c in templ) {
+        temp = templ[c];
+        if(temp._id === vm.course._id){
+          result = true;
+        }
+      }
+      return result;
+    }
+
+    function addClass(course) {
+      var templ = vm.user.courseTake;
+      // console.log(templ);
+      // console.log(vm.course);
+      flag = true;
+      for(var c in templ) {
+        temp = templ[c];
+        if(temp._id === vm.course._id){
+          alert("You already registed for this class");
+          flag = false;
+        }
+      }
+      if (flag) {
+        // console.log("course added");
+        vm.user.courseTake.push(vm.course);
+        UserService.updateUser(vm.user);
+      }
+    }
+
+    function dropClass(course) {
+      // console.log(vm.user.courseTake);
+      var templ = vm.user.courseTake;
+      // console.log(templ);
+      // console.log(vm.course._id);
+      for(var c in templ) {
+        temp = templ[c];
+        if(temp._id === vm.course._id) {
+          vm.user.courseTake.splice(c, 1);
+        }
+      }
+      UserService.updateUser(vm.user);
+    }
+
   }
 })();
+
+(function(){
+  angular.module("WebAppMaker")
+  .controller("CourseSocialController", CourseSocialController);
+
+  function CourseSocialController($routeParams, CourseService, UserService) {
+    var vm = this;
+    vm.userId = $routeParams['uid'];
+
+    function init() {
+      UserService.findUserById(vm.userId).success(function(user){
+        vm.user = user;
+      });
+      CourseService.findAllCourses().success(function(courses){
+        vm.courses = courses;
+      });
+    }
+    init();
+  }
+})();
+

@@ -37,12 +37,10 @@
     vm.register = register;
 
     function register(user) {
-      //check input field empty
-      if(!user || !user.username || !user.password || !user.password2 || !user.type) {
-        vm.error = "Username or Password or Identity can't be empty";
+      if(!user || !user.username || !user.password || !user.password2 || !user.type || !user.firstName || !user.lastName) {
+        vm.error = "Mandatory filed cannot be empty!";
         return;
       }
-      //check password matching
       if(user.password != user.password2) {
         vm.error = "Password don't match";
         return;
@@ -52,7 +50,6 @@
         return;
       }
 
-
       var user = {
         username: user.username,
         password: user.password,
@@ -61,7 +58,6 @@
         lastName: user.lastName,
         address: user.address,
         email: user.email
-
       }
 
       UserService

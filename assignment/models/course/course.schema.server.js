@@ -9,8 +9,7 @@ module.exports = function () {
         date: String,
         instructor: String,
         instructoremail: String,
-        description: String
-        
+        description: String        
     },
       {collection: "course"});
     return CourseSchema;

@@ -11,7 +11,8 @@ module.exports = function () {
         address: String,
         dob: Date,
         type: String,
-        course: [CourseSchema], 
+        course: [CourseSchema],
+        courseTake: [CourseSchema],
         dateCreated: Date
     },
      {collection: "user"});
