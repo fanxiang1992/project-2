@@ -31,8 +31,18 @@ body {
 }
 
 .navbar-blue {
-    background-color: #337ab7;
+    /*background-color: #337ab7;*/
+    background-color: #1e824c;
     border-color: #337ab7;
+}
+
+.btn-primary {
+  background-color: #1e824c;
+
+}
+
+.btn-primary:hover {
+  background-color: #eb974e;
 }
 
 .white-text {
