@@ -1,14 +1,25 @@
 
 module.exports = function (app, model) {
 
-
         app.get('/api/user', findUser);
         app.get('/api/user/:uid', findUserbyId);
         app.post('/api/user',createUser);
         app.put('/api/user/:uid',updateUser);
         app.delete('/api/user/:uid',deleteUser);
 
-
+        function getAllUser(req, res) {
+          model.userModel.getAllUser().then(
+            function (users) {
+              if(users) {
+                res.json(users);
+              } else {
+                res.send('0');
+              }
+            },
+            function(error){
+              res.sendStatus(400).send(error);
+            })
+        }
 
 
         function deleteUser(req, res) {
@@ -23,7 +34,6 @@ module.exports = function (app, model) {
             )
         }
 
-
         function updateUser(req, res) {
           var user = req.body;
           var uid = req.params.uid;
@@ -36,8 +46,6 @@ module.exports = function (app, model) {
             }
             )
         }
-
-
 
         function createUser(req, res) {
           var user = req.body;
@@ -60,6 +68,8 @@ module.exports = function (app, model) {
           }
           else if (query.username) {
             findUserByUsername(req, res);
+          } else { // This might create some unknow issue or bug later 
+            getAllUser(req, res);
           }
         }
 

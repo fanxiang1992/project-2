@@ -13,17 +13,15 @@ module.exports = function() {
 
     var mongoose = require('mongoose');
     mongoose.connect(connectionString);
-    
-
 
     var userModel = require("./user/user.model.server.js")();
     var courseModel = require("./course/course.model.server.js")();
- 
-
+    var gradeModel = require("./grade/grade.model.server.js")(); 
 
     var model = {
         userModel: userModel,
         courseModel: courseModel,
+        gradeModel: gradeModel,
     };
 
     return model;

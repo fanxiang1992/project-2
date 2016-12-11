@@ -22,7 +22,7 @@
     }
 
     function createCourse(uid, course) {
-      course.developerId = uid;
+      // course.developerId = uid;
       var url = '/api/user/' + uid + '/course';
       return $http.post(url, course);
     }

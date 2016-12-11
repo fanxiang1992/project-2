@@ -24,7 +24,7 @@
   angular.module("WebAppMaker")
   .controller("CourseEditController", CourseEditController);
 
-  function CourseEditController($routeParams, CourseService, $route, $location) {
+  function CourseEditController($routeParams, UserService, CourseService, $route, $location) {
     var vm = this;
     vm.courseId = $routeParams.cid;
     vm.userId = $routeParams.uid;
@@ -39,6 +39,11 @@
       CourseService.findCourseById(vm.courseId).success(function(course) {
         vm.course = course;
       });
+
+      UserService.getAllUser().success(function(alluser){
+        vm.alluser = alluser;
+      });
+
     }
     init();
 
@@ -49,9 +54,26 @@
     }
 
     function deleteCourse() {
+      var flag = false;
+      for (var u in vm.alluser) {
+        var currentUser = vm.alluser[u];
+        var courseTaken = currentUser.courseTake;
+        for(var c in courseTaken) {
+          if(vm.course._id === courseTaken[c]._id){
+            flag = true;
+          }
+        }
+      }
+      
+      if(flag) {
+        alert("There are students in the course can delete the courese!!")
+        return;
+      }
+
       CourseService.deleteCourse(vm.courseId).success(function() {
-        $location.url("/user/" + vm.userId + "/course");
+          $location.url("/user/" + vm.userId + "/course");
       })
+
     }
   }
 })();
@@ -78,6 +100,10 @@
         vm.user = user;
       });
 
+      UserService.getAllUser().success(function(alluser){
+        vm.alluser = alluser;
+      });
+
       CourseService.findAllCourses().success(function(allcourses){
         vm.allcourses = allcourses;
       });
@@ -90,6 +116,8 @@
         vm.error = "Course name or description can't be empty";
         return;
       }
+
+      console.log(vm.alluser);
 
       for(i = 0; i < vm.allcourses.length; i++) {
         if(course.name == vm.allcourses[i].name) {
@@ -207,19 +235,92 @@
   angular.module("WebAppMaker")
   .controller("CourseSocialController", CourseSocialController);
 
-  function CourseSocialController($routeParams, CourseService, UserService) {
+  function CourseSocialController($routeParams, GradeService, CourseService, UserService) {
     var vm = this;
     vm.userId = $routeParams['uid'];
+    vm.courseId = $routeParams['cid'];
+    vm.createGrade = createGrade;
+    vm.getGrade = getGrade;
+
 
     function init() {
       UserService.findUserById(vm.userId).success(function(user){
         vm.user = user;
       });
-      CourseService.findAllCourses().success(function(courses){
-        vm.courses = courses;
+
+      CourseService.findCourseById(vm.courseId).success(function(course) {
+        vm.course = course;
+        UserService.getAllUser().success(function(alluser){
+                  console.log("-------------");
+          vm.alluser = alluser;
+                            console.log(vm.alluser);
+          vm.allinClass = [];
+          for (var u in vm.alluser) {
+            var currentUser = vm.alluser[u];
+            var courseTaken = currentUser.courseTake;
+            for(var c in courseTaken) {
+              if(vm.course._id === courseTaken[c]._id){
+                vm.allinClass.push(currentUser);
+              }
+            }
+          }
+
+          for (var u in vm.allinClass) {
+            GradeService.findCourseGradeforUser(vm.allinClass[u]._id, vm.course._id).success(function(returnGrade){
+              assignGrade(vm.allinClass, returnGrade);
+            });
+          }
+        });
       });
+
     }
     init();
+
+    function assignGrade(users, grade) {
+      var userid = grade.userId;
+      for (var u in vm.allinClass) {
+        if (vm.allinClass[u]._id == userid) {
+          if(grade == "0") {
+            vm.allinClass[u].gradeLetter = "N/A";
+          } else {
+            vm.allinClass[u].gradeLetter = grade.letterGrade;
+          }
+          break;
+        }
+      }
+    }
+
+    function createGrade(user, letter) {
+      console.log(user);
+      console.log(letter);
+      var grade = {letterGrade: letter, courseId: vm.course._id, userId: user._id};
+      GradeService.findCourseGradeforUser(user._id, vm.course._id).success(function(returnGrade){
+        console.log("Returngrade:::::::")
+        console.log(returnGrade);
+        if(returnGrade == "0") {
+          console.log("create!!!!");
+          GradeService.createGrade(grade).success(function(createdGrade) {
+            console.log("Create success!!");
+          });
+        } else {
+                    console.log("update!!!!!!!");
+          GradeService.updateGrade(returnGrade._id, grade).success(function(updatedGrade) {
+            console.log("Update success");
+          });
+        }
+      });
+    }
+
+    function getGrade(user) {
+      GradeService.findCourseGradeforUser(user._id, vm.course._id).success(function(returnGrade){
+        console.log(returnGrade);
+        if(returnGrade == "0") {
+          return "N/A";
+        } else {
+          return returnGrade.letterGrade;
+        }
+      });
+    }
   }
 })();
 
