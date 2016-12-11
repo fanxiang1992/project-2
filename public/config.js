@@ -8,6 +8,11 @@
       controller: "HomeController",
       controllerAs: "model"
     })
+    .when("/info", {
+      templateUrl: "views/info.html",
+      controller: "InfoController",
+      controllerAs: "model"
+    })
     .when("/login", {
       templateUrl: "views/user/login.view.client.html",
       controller: "LoginController",
