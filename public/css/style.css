@@ -6,15 +6,91 @@ body {
     padding-top: 60px;
 }
 
-.header {
-    background-color: #337ab7
+.carousel img {
+  width: 100%;
 }
 
-.header-icon {
-    background-color: #337ab7;
-    font-size: 15px;
-    color: white;
-    padding-top: 3px;
+.login-register-block {
+  width: 100%;
+}
+
+.weather-block {
+  background: #34495e;
+  width: 100%;
+  height: 75%;
+  border-radius: 15px;
+  padding: 2rem;
+  color: white;
+  position: relative;
+  height: 30rem;
+  margin-top: 2rem;
+}
+
+.weather-time {
+  font-size: 1.8rem;
+}
+
+.weather-icon img {
+  margin: 1rem auto;
+  display: block;
+  width: 60%;
+}
+
+.weather-temperature {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.weather-temperature span {
+  font-size: 6rem;
+}
+
+.weather-feelsLike span {
+  font-size: 1.5rem;
+}
+
+.weather-weather {
+  font-size: 1.5rem;
+}
+
+.weather-displayLocation {
+  border-top: 2px solid white;
+  position: absolute;
+  bottom: 1rem;
+  font-size: 2.2rem;
+  width: 92%;
+  text-align: center;
+}
+
+.date-block {
+  background: #C5EFF7;
+  color: black;
+  width: 12rem;
+  height: 12rem;
+  padding: 2px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin: 4rem auto;
+}
+
+.date-month {
+  background: #3498db;
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 0.4rem 0;
+}
+
+.date-day {
+  font-size: 5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.date-week {
+  width: 100%;
+  text-align: center;
+  margin-top: -0.3rem;
 }
 
 .navbar-plus {
@@ -34,6 +110,14 @@ body {
     /*background-color: #337ab7;*/
     background-color: #1e824c;
     border-color: #337ab7;
+}
+
+.navbar-blue a {
+  color: white;
+}
+
+.navbar-blue a:hover {
+  color: #eb974e;
 }
 
 .btn-primary {
@@ -95,6 +179,9 @@ body {
 .course-new > .col-sm-4, .course-new > .col-sm-8 {
 	height: 100vh;
 	padding: 0;
+}
+.container-margin {
+  margin-top: 4rem;
 }
 
 .header1 {

@@ -1,3 +1,91 @@
-<h1>Home !!!!</h1>
+<nav class="navbar navbar-default navbar-blue navbar-fixed-top">
+  <div class="container-fluid col-xs-12">
+    <div class="logo pull-left">
+      <img src="vendor/images/logo.png" style="height: 50px;">
+    </div>
+  </div>
+</nav>
 
-<a href="#/login">Login</a>
+<div class="container">
+  <div class="row" style="margin-top: 3rem;">
+    <div class="col-xs-12 col-md-7">
+    <div uib-carousel active="0" interval="5000" no-wrap="false">
+        <div uib-slide index="0">
+          <img src="vendor/images/slide1.jpg">
+          <div class="carousel-caption"></div>
+        </div>
+        <div uib-slide index="1">
+          <img src="vendor/images/slide2.jpg">
+          <div class="carousel-caption"></div>
+        </div>
+        <div uib-slide index="2">
+          <img src="vendor/images/slide3.jpg">
+          <div class="carousel-caption"></div>
+        </div>
+        <div uib-slide index="3">
+          <img src="vendor/images/slide4.jpg">
+          <div class="carousel-caption"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <div class="login-register-block">
+        <a class="btn btn-primary btn-block" href="#/login">
+          Login
+        </a>
+        <a class="btn btn-primary btn-block" href="#/register">
+          Register
+        </a>
+      </div>
+      <div class="weather-block">
+        <div class="weather-time">
+          {{model.observationTime}}
+        </div>
+        <div class="col-xs-6">
+          <div class="weather-icon">
+            <div class="date-block">
+              <div class="date-month">
+                {{model.dateMonth}} {{model.dateYear}}
+              </div>
+              <div class="date-day">
+                {{model.dateDay}}
+              </div>
+              <div class="date-week">
+                {{model.dateWeek}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="weather-temperature">
+            <span>{{model.temperature}}</span> F
+          </div>
+          <div class="weather-feelsLike">
+            Feels like <span>{{model.feelsLike}}</span> F
+          </div>
+          <div class="weather-weather">
+            {{model.weather}}
+          </div>
+        </div>
+        <div class="weather-displayLocation">
+          {{model.displayLocation.city}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row about-us" style="margin-top: 3rem;">
+      <div class="col-xs-12">
+        <div class="col-xs-12 col-md-7">
+          <h2>About Us</h2>
+          <div>BXSchool is an online learning platform that helps anyone learn computer science skills to achieve personal and professional goals. Through individual, corporate, academic subscriptions, members have access to the BXSchool course library of engaging, top-quality courses taught by recognized industry experts.</div>
+        </div>
+        <div class="col-xs-12 col-md-5">
+          <h2>Our Mission</h2>
+          <div>To help you learn the skills you need to achieve your full potential.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
