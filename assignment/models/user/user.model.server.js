@@ -10,7 +10,8 @@ module.exports = function() {
         updateUser:updateUser,
         findUserByCredentials:findUserByCredentials,
         removeUser:removeUser,
-        findUserByUsername:findUserByUsername
+        findUserByUsername:findUserByUsername,
+        getAllUser
     }
     return api;
 

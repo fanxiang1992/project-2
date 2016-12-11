@@ -1,0 +1,43 @@
+
+<nav class="navbar navbar-default navbar-blue navbar-fixed-top">
+  <div class="container-fluid col-xs-12">
+    <a class="navbar-brand col-xs-1" ng-href="#/user/{{model.userId}}/course">
+      <span class="glyphicon glyphicon-chevron-left white-text" aria-hidden="true"></span>
+    </a>
+    <div class="navbar-white-text col-xs-11"> Blackboard
+    </div>
+  </div>
+</nav>
+
+<ul class="content-list container" ng-show="model.user.type == 'faculty'">
+  <li ng-repeat="student in model.allinClass" class="row">
+    <a href="" class="col-xs-11">
+        {{student.firstName}} {{student.lastName}}
+    </a>
+    <input ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> 
+    <a ng-click="model.createGrade(student, student.gradeLetter)"> click </a>
+  </li>
+</ul>
+
+<!-- <ul class="content-list container" ng-show="model.user.type == 'student'">
+  <li ng-repeat="student in model.allinClass" class="row">
+    <a href="" class="col-xs-11">
+        {{student.firstName}} {{student.lastName}}
+    </a>
+  </li>
+</ul> -->
+
+<nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right pull-right">
+      <li>
+        <a class="navbar-link" href="#/user/{{model.userId}}">
+          <span class="glyphicon glyphicon-user white-text" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+

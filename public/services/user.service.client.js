@@ -10,9 +10,15 @@
       createUser: createUser,
       findUserByUsername: findUserByUsername,
       updateUser: updateUser,
-      deleteUser: deleteUser
+      deleteUser: deleteUser,
+      getAllUser: getAllUser
     };
     return api;
+
+    function getAllUser() {
+      var url = '/api/user';
+      return $http.get(url);
+    }
 
     function findUserById(userId) {
       var url = '/api/user/'+userId;
