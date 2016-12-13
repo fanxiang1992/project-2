@@ -6,12 +6,11 @@ module.exports = function() {
 
 	var api = {
 		findAllGradeforUser: findAllGradeforUser,
-		findAllGradeforCourse: findAllGradeforCourse,
+		// findAllGradeforCourse: findAllGradeforCourse,
 		updateGrade: updateGrade,
 		createGrade: createGrade,
 		findCourseGradeforUser: findCourseGradeforUser
 	};
-
 	return api;
 
 	function findCourseGradeforUser(uid, cid) {
@@ -21,18 +20,22 @@ module.exports = function() {
 		})
 	}
 
-
     function createGrade(grade) {
         return GradeModel.create(grade);
     }
 
-	function findAllGradeforUser(userId) {
-		return GradeModel.findById(userId);
+	function findAllGradeforUser(uid) {
+		console.log("step 3");
+		return GradeModel.find({ userId: uid });
 	}
 
-	function findAllGradeforCourse(courseId) {
-		return GradeModel.findById(courseId);
-	}
+    // function findAllWebsitesForUser(userId) {
+         // return WebsiteModel.find({ _user: userId });
+    // }
+
+	// function findAllGradeforCourse(courseId) {
+	// 	return GradeModel.findById(courseId);
+	// }
 
 	function updateGrade(gradeId, grade) {
 		return GradeModel

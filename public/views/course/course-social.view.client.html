@@ -9,23 +9,32 @@
   </div>
 </nav>
 
+<div ng-show="model.success" class="alert alert-success" role="alert">
+  {{model.success}}
+</div>
+
+<div ng-show="model.error" class="alert alert-danger" role="alert">
+  {{model.error}}
+</div>
+
+
 <ul class="content-list container" ng-show="model.user.type == 'faculty'">
   <li ng-repeat="student in model.allinClass" class="row">
     <a href="" class="col-xs-11">
         {{student.firstName}} {{student.lastName}}
     </a>
     <input ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> 
-    <a ng-click="model.createGrade(student, student.gradeLetter)"> click </a>
+    <a ng-click="model.createGrade(student, student.gradeLetter)"> Assign Score </a>
   </li>
 </ul>
 
-<!-- <ul class="content-list container" ng-show="model.user.type == 'student'">
+<ul class="content-list container" ng-show="model.user.type == 'student'">
   <li ng-repeat="student in model.allinClass" class="row">
     <a href="" class="col-xs-11">
         {{student.firstName}} {{student.lastName}}
     </a>
   </li>
-</ul> -->
+</ul>
 
 <nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
   <div class="container-fluid">

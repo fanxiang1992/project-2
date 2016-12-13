@@ -3,7 +3,7 @@ module.exports = function (app, model) {
 
 	app.get('/api/grade/:userId', findAllGradeforUser);
 
-	app.get('/api/grade/this/:courseId', findAllGradeforCourse);
+	// app.get('/api/grade/this/:courseId', findAllGradeforCourse);
 
 	app.put('/api/grade/:gradeId', updateGrade);
 
@@ -42,7 +42,9 @@ module.exports = function (app, model) {
     }
 
 	function findAllGradeforUser(req, res) {
-		model.gradeModel.findAllGradeforUser(req.params.userId).then(
+		console.log("step 2");
+		var userId = req.params.userId;
+		model.gradeModel.findAllGradeforUser(userId).then(
 			function (grades) {
 				if(grades) {
 					res.json(grades);
@@ -55,20 +57,20 @@ module.exports = function (app, model) {
 			});
 	}
 
-	function findAllGradeforCourse(req, res) {
-		console.log("not here");
-		model.gradeModel.findAllGradeforCourse(req.params.courseId).then(
-			function (grades) {
-				if(grades) {
-					res.json(grades);
-				} else {
-					res.send('0');
-				}
-			},
-			function(error){
-				res.sendStatus(400).send(error);
-			});
-	}
+	// function findAllGradeforCourse(req, res) {
+	// 	console.log("not here");
+	// 	model.gradeModel.findAllGradeforCourse(req.params.courseId).then(
+	// 		function (grades) {
+	// 			if(grades) {
+	// 				res.json(grades);
+	// 			} else {
+	// 				res.send('0');
+	// 			}
+	// 		},
+	// 		function(error){
+	// 			res.sendStatus(400).send(error);
+	// 		});
+	// }
 
 	function updateGrade(req, res) {
 		var grade = req.body;

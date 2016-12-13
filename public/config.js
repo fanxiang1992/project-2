@@ -28,6 +28,11 @@
       controller: "AfterLoginController",
       controllerAs: "model"
     })
+    .when("/user/:uid/mygrades", {
+      templateUrl: "views/grade/grade-student.view.client.html",
+      controller: "GradeStudentController",
+      controllerAs: "model"
+    })
     .when("/user/:uid/profile", {
       templateUrl: "views/user/profile.view.client.html",
       controller: "ProfileController",

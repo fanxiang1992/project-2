@@ -96,7 +96,15 @@
     init();
 
     function updateUser() {
-      UserService.updateUser(vm.user);
+      // console.log(vm.user);
+      if(vm.user.email.includes("@") && (vm.user.email.includes(".com") || vm.user.email.includes(".COM"))){
+        UserService.updateUser(vm.user);
+        vm.success = "You have successfully update your personal info!"
+        vm.error = null;
+      } else {
+        vm.error = "Please enter a valid email address: example@example.com"
+        vm.success = null;
+      }
     }
 
     function unregisterUser() {
