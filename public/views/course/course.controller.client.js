@@ -66,7 +66,7 @@
       }
       
       if(flag) {
-        alert("There are students in the course can delete the courese!!")
+        alert("There are students currently taking this course. You CAN'T delete the courese now!")
         return;
       }
 
@@ -242,7 +242,6 @@
     vm.createGrade = createGrade;
     vm.getGrade = getGrade;
 
-
     function init() {
       UserService.findUserById(vm.userId).success(function(user){
         vm.user = user;
@@ -250,10 +249,9 @@
 
       CourseService.findCourseById(vm.courseId).success(function(course) {
         vm.course = course;
-        UserService.getAllUser().success(function(alluser){
-                  console.log("-------------");
+        UserService.getAllUser().success(function(alluser){ 
           vm.alluser = alluser;
-                            console.log(vm.alluser);
+          console.log(vm.alluser);
           vm.allinClass = [];
           for (var u in vm.alluser) {
             var currentUser = vm.alluser[u];
@@ -291,21 +289,34 @@
     }
 
     function createGrade(user, letter) {
-      console.log(user);
-      console.log(letter);
+      // console.log(user);
+      // console.log(letter);
+
+      if (letter != "A" && letter != "B" && letter != "C" && letter != "D" && letter != "F"
+           && letter != "A-" && letter != "B-" && letter != "C-" && letter != "D-"
+           && letter != "B+" && letter != "C+" && letter != "D+") {
+        vm.error = "A Grade can only be a LetterGrade.";
+        vm.success = null;
+        return;
+      }
+
       var grade = {letterGrade: letter, courseId: vm.course._id, userId: user._id};
       GradeService.findCourseGradeforUser(user._id, vm.course._id).success(function(returnGrade){
-        console.log("Returngrade:::::::")
+        // console.log("Returngrade:::::::")
         console.log(returnGrade);
         if(returnGrade == "0") {
           console.log("create!!!!");
           GradeService.createGrade(grade).success(function(createdGrade) {
             console.log("Create success!!");
+            vm.success = "Successfully assigned Grade for this student.";
+            vm.error = null;
           });
         } else {
-                    console.log("update!!!!!!!");
+          console.log("update!!!!!!!");
           GradeService.updateGrade(returnGrade._id, grade).success(function(updatedGrade) {
             console.log("Update success");
+            vm.success = "Successfully assigned Grade for this student.";
+            vm.error = null;
           });
         }
       });

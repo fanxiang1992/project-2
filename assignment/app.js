@@ -1,5 +1,3 @@
-
-
 // create a node js module
 module.exports = function (app) {
     var model = require("./models/models.server")();

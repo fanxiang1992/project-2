@@ -6,7 +6,7 @@
 		var api = {
 			createGrade: createGrade,
 			findAllGradeforUser: findAllGradeforUser,
-			findAllGradeforCourse: findAllGradeforCourse,
+			// findAllGradeforCourse: findAllGradeforCourse,
 			updateGrade: updateGrade,
 			findCourseGradeforUser: findCourseGradeforUser
 		};
@@ -18,6 +18,7 @@
 		}
 
 		function findAllGradeforUser(uid) {
+			console.log("step 1");
 			var url = '/api/grade/' + uid;
 			return $http.get(url);
 		}
@@ -27,12 +28,11 @@
 			return $http.get(url);
 		}
 
-
-		function findAllGradeforCourse(cid) {
-			console.log("gets here")
-			var url = '/api/grade/this/' + cid;
-			return $http.get(url);
-		}
+		// function findAllGradeforCourse(cid) {
+		// 	console.log("gets here")
+		// 	var url = '/api/grade/this/' + cid;
+		// 	return $http.get(url);
+		// }
 
 	    function updateGrade(gid, grade) {
 	      var url = '/api/grade/' + gid;
