@@ -1,7 +1,7 @@
 module.exports = function() {
 
     // var connectionString = 'mongodb://localhost/fan-xiang-webdev';
-    var connectionString = 'mongodb://heroku_smq3mkz6:akstc254qrotv2pg6188sutrl6@ds133378.mlab.com:33378/heroku_smq3mkz6'
+    var connectionString = 'mongodb://heroku_smq3mkz6:akstc254qrotv2pg6188sutrl6@ds133378.mlab.com:33378/heroku_smq3mkz6';
     // if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     //     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
     //         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
