@@ -1,7 +1,7 @@
 
 module.exports = function() {
     var mongoose = require("mongoose");
-    var CourseSchema = require("./Course.schema.server")();
+    var CourseSchema = require("./course.schema.server")();
     var CourseModel = mongoose.model("CourseModel", CourseSchema);
 
     var api = {
