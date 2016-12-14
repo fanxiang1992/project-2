@@ -21,8 +21,8 @@
 <ul class="content-list container" ng-show="model.user.type == 'faculty'">
   <label style="font-size: 2.5rem;">Students Enrolled</label>
   <li ng-repeat="student in model.allinClass" class="row list-item">
-    <div href="" class="col-xs-9"><div class="list-name">{{student.firstName}} {{student.lastName}}</div></div>
-    <div class="col-xs-1"><input class="form-control" ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> </div>
+    <div href="" class="col-xs-8"><div class="list-name">{{student.firstName}} {{student.lastName}}</div></div>
+    <div class="col-xs-2"><input class="form-control" ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> </div>
     
     <div class="col-xs-2"><a class="btn btn-primary btn-block" ng-click="model.createGrade(student, student.gradeLetter)"> Assign Score </a></div>
     
