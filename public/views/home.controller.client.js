@@ -20,7 +20,7 @@
     // vm.weather = "Partly Cloudy";
     // vm.icon = "http://icons.wxug.com/i/c/k/nt_clear.gif";
 
-    $http.get("http://api.wunderground.com/api/" + apiKey + "/conditions/q/" + state + "/" + city + ".json").then(function(response) {
+    $http.get("https://api.wunderground.com/api/" + apiKey + "/conditions/q/" + state + "/" + city + ".json").then(function(response) {
       // console.log(response);
       var current_observation = response.data.current_observation;
       vm.displayLocation = current_observation.display_location;    //object
