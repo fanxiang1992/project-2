@@ -3,9 +3,9 @@ module.exports = function (app, model) {
 
         app.get('/api/user', findUser);
         app.get('/api/user/:uid', findUserbyId);
-        app.post('/api/user',createUser);
-        app.put('/api/user/:uid',updateUser);
-        app.delete('/api/user/:uid',deleteUser);
+        app.post('/api/user', createUser);
+        app.put('/api/user/:uid', updateUser);
+        app.delete('/api/user/:uid', deleteUser);
 
         function getAllUser(req, res) {
           model.userModel.getAllUser().then(
@@ -48,6 +48,7 @@ module.exports = function (app, model) {
         }
 
         function createUser(req, res) {
+          console.log(req);
           var user = req.body;
           console.log(user);
           model.userModel.createUser(user).then(
