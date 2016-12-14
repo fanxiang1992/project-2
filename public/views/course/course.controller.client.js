@@ -235,12 +235,14 @@
   angular.module("WebAppMaker")
   .controller("CourseSocialController", CourseSocialController);
 
-  function CourseSocialController($routeParams, GradeService, CourseService, UserService) {
+  function CourseSocialController($routeParams, GradeService, CourseService, UserService, PostService, $location) {
     var vm = this;
     vm.userId = $routeParams['uid'];
     vm.courseId = $routeParams['cid'];
     vm.createGrade = createGrade;
     vm.getGrade = getGrade;
+    vm.createPost = createPost;
+    vm.deletePost = deletePost;
 
     function init() {
       UserService.findUserById(vm.userId).success(function(user){
@@ -271,6 +273,22 @@
         });
       });
 
+      PostService.findAllPostforCourse(vm.courseId).success(function(posts){
+        if(posts != '[]') {
+          vm.allpost = posts;
+          for(p in posts) {
+            // set the current userId for everypost user for enable delete
+            vm.allpost[p].currentId = vm.userId;
+            var uid = posts[p].userId;
+            UserService.findUserById(uid).success(function(user){
+              //assign a user name for the post
+              setUserNameforPost(user);
+            })
+          }
+        }
+      }).error(function(){
+        console.log("finding posts for course error");
+      })
     }
     init();
 
@@ -331,6 +349,38 @@
           return returnGrade.letterGrade;
         }
       });
+    }
+
+    function setUserNameforPost(user) {
+      for (p in vm.allpost){
+        if (vm.allpost[p].userId == user._id) {
+          vm.allpost[p].username = user.firstName + user.lastName;
+        }
+      }
+    }
+
+    function createPost(post) {
+      // console.log("step1 post");
+
+      if(!post || !post.comment) {
+        vm.error = "You cannot submit a empty comment!";
+        return;
+      }
+
+      vm.post.userId = vm.userId;
+      vm.post.courseId = vm.courseId;
+
+
+      PostService.createPost(post).success(function(returnpost){
+        $location.url("/user/" + vm.userId + "/course/" + vm.courseId + "/social");
+      })
+    }
+
+    function deletePost(pid) {
+      // console.log("delete step 1");
+      PostService.deletePost(pid).success(function() {
+        $location.url("/user/" + vm.userId + "/course/" + vm.courseId + "/social");
+      })
     }
   }
 })();

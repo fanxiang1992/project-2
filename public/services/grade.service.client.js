@@ -14,11 +14,11 @@
 
 		function createGrade(grade) {
 			var url = '/api/grade';
-			return $http.post(url, grade)
+			return $http.post(url, grade);
 		}
 
 		function findAllGradeforUser(uid) {
-			console.log("step 1");
+			// console.log("step 1");
 			var url = '/api/grade/' + uid;
 			return $http.get(url);
 		}
