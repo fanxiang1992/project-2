@@ -42,7 +42,7 @@ module.exports = function (app, model) {
     }
 
 	function findAllGradeforUser(req, res) {
-		console.log("step 2");
+		// console.log("step 2");
 		var userId = req.params.userId;
 		model.gradeModel.findAllGradeforUser(userId).then(
 			function (grades) {

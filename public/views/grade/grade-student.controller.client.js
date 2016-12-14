@@ -11,7 +11,7 @@
         if(grades != '[]') {
           vm.grades = grades;
           for (g in grades) {
-            console.log(g);
+            // console.log(g);
             var cid = grades[g].courseId;
             CourseService.findCourseById(cid).success(function(course){
               setCourseNameforGrades(course);

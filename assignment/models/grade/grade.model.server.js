@@ -25,7 +25,7 @@ module.exports = function() {
     }
 
 	function findAllGradeforUser(uid) {
-		console.log("step 3");
+		// console.log("step 3");
 		return GradeModel.find({ userId: uid });
 	}
 

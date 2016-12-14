@@ -36,6 +36,23 @@
   </li>
 </ul>
 
+<div class="form-group contianer">
+  <label for="disscussionboard">Disscussion Board</label>
+  <textarea ng-model="model.post.comment" rows="6" cols="10" class="form-control" placeholder="Leave your comment here."></textarea>
+  <a class="btn btn-primary btn-block" ng-click="model.createPost(model.post)"> Comment </a>
+</div>
+
+<ul class="content-list container">
+  <li ng-repeat="post in model.allpost" class="row">
+    <a class="col-xs-11">
+      {{post.username}} -> {{post.comment}}
+      <a class="btn btn-danger btn-block pull-right" ng-click="model.deletePost(post._id)" style="width:20%" ng-show="post.userId == post.currentId">
+        Delete</a>
+    </a>
+  </li>
+</ul>
+
+
 <nav class="navbar navbar-default navbar-blue navbar-fixed-bottom">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right pull-right">
