@@ -19,36 +19,37 @@
 
 
 <ul class="content-list container" ng-show="model.user.type == 'faculty'">
-  <li ng-repeat="student in model.allinClass" class="row">
-    <a href="" class="col-xs-11">
-        {{student.firstName}} {{student.lastName}}
-    </a>
-    <input ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> 
-    <a ng-click="model.createGrade(student, student.gradeLetter)"> Assign Score </a>
+  <label style="font-size: 2.5rem;">Students Enrolled</label>
+  <li ng-repeat="student in model.allinClass" class="row list-item">
+    <div href="" class="col-xs-9"><div class="list-name">{{student.firstName}} {{student.lastName}}</div></div>
+    <div class="col-xs-1"><input class="form-control" ng-model="student.gradeLetter" value="student.gradeLetter" type="text" id="last-name" placeholder="Enter Letter Grade"> </div>
+    
+    <div class="col-xs-2"><a class="btn btn-primary btn-block" ng-click="model.createGrade(student, student.gradeLetter)"> Assign Score </a></div>
+    
   </li>
 </ul>
 
 <ul class="content-list container" ng-show="model.user.type == 'student'">
-  <li ng-repeat="student in model.allinClass" class="row">
-    <a href="" class="col-xs-11">
-        {{student.firstName}} {{student.lastName}}
-    </a>
+  <label style="font-size: 2.5rem;">Students Enrolled</label>
+  <li ng-repeat="student in model.allinClass" class="row list-item">
+    <div class="col-xs-12 list-name">{{student.firstName}} {{student.lastName}}</div>
   </li>
 </ul>
 
-<div class="form-group contianer">
-  <label for="disscussionboard">Disscussion Board</label>
-  <textarea ng-model="model.post.comment" rows="6" cols="10" class="form-control" placeholder="Leave your comment here."></textarea>
+<div class="form-group container discussion-board">
+  <label for="disscussionboard" style="font-size: 2.5rem;">Disscussion Board</label>
+  <textarea ng-model="model.post.comment" rows="5" cols="10" class="form-control" placeholder="Leave your comment here."></textarea>
   <a class="btn btn-primary btn-block" ng-click="model.createPost(model.post)"> Comment </a>
 </div>
 
-<ul class="content-list container">
-  <li ng-repeat="post in model.allpost" class="row">
-    <a class="col-xs-11">
-      {{post.username}} -> {{post.comment}}
-      <a class="btn btn-danger btn-block pull-right" ng-click="model.deletePost(post._id)" style="width:20%" ng-show="post.userId == post.currentId">
-        Delete</a>
-    </a>
+<ul class="content-list container" style="margin-bottom: 8rem;">
+  <li ng-repeat="post in model.allpost" class="col-xs-12 comment-list-item">
+    <div class="col-xs-7">
+      <div class="comment-name">{{post.username}}</div>
+      <div class="comment-content">{{post.comment}}</div>
+    </div>
+    <a class="btn btn-danger btn-block pull-right col-xs-5" ng-click="model.deletePost(post._id)" style="width:20%" ng-show="post.userId == post.currentId">Delete</a>
+
   </li>
 </ul>
 

@@ -235,7 +235,7 @@
   angular.module("WebAppMaker")
   .controller("CourseSocialController", CourseSocialController);
 
-  function CourseSocialController($routeParams, GradeService, CourseService, UserService, PostService, $location) {
+  function CourseSocialController($routeParams, GradeService, CourseService, UserService, PostService, $location, $route) {
     var vm = this;
     vm.userId = $routeParams['uid'];
     vm.courseId = $routeParams['cid'];
@@ -354,7 +354,7 @@
     function setUserNameforPost(user) {
       for (p in vm.allpost){
         if (vm.allpost[p].userId == user._id) {
-          vm.allpost[p].username = user.firstName + user.lastName;
+          vm.allpost[p].username = user.firstName + ' ' + user.lastName;
         }
       }
     }
@@ -372,14 +372,15 @@
 
 
       PostService.createPost(post).success(function(returnpost){
-        $location.url("/user/" + vm.userId + "/course/" + vm.courseId + "/social");
+        $route.reload();
+        // $location.url("/user/" + vm.userId + "/course/" + vm.courseId + "/social");
       })
     }
 
     function deletePost(pid) {
       // console.log("delete step 1");
       PostService.deletePost(pid).success(function() {
-        $location.url("/user/" + vm.userId + "/course/" + vm.courseId + "/social");
+        $route.reload();
       })
     }
   }

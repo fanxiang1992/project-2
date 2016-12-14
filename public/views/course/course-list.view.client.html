@@ -16,8 +16,8 @@
 </nav>
 
 <ul class="content-list container" ng-show="model.user.type == 'faculty'">
-  <li ng-repeat="course in model.courses" class="row">
-    <a href="#/user/{{model.userId}}/course/{{course._id}}/social" class="col-xs-11">
+  <li ng-repeat="course in model.courses" class="row list-item list-item-large-padding">
+    <a href="#/user/{{model.userId}}/course/{{course._id}}/social" class="col-xs-11 large-text">
       {{course.name}}-{{course.sectionNum}}
     </a>
     <a href="#/user/{{model.userId}}/course/{{course._id}}" class="text-right col-xs-1">
@@ -27,8 +27,8 @@
 </ul>
 
 <ul class="content-list container" ng-show="model.user.type == 'student'">
-  <li ng-repeat="course in model.user.courseTake" class="row">
-    <a href="#/user/{{model.userId}}/course/{{course._id}}/social" class="col-xs-11">
+  <li ng-repeat="course in model.user.courseTake" class="row list-item list-item-large-padding">
+    <a href="#/user/{{model.userId}}/course/{{course._id}}/social" class="col-xs-11 large-text">
       {{course.name}}-{{course.sectionNum}}
     </a>
   </li>

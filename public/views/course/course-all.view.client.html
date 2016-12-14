@@ -9,8 +9,8 @@
 </nav>
 
 <ul class="content-list container">
-  <li ng-repeat="course in model.courses" class="row">
-    <a href="#/user/{{model.userId}}/course/{{course._id}}/details" class="col-xs-11">
+  <li ng-repeat="course in model.courses" class="row list-item list-item-large-padding">
+    <a href="#/user/{{model.userId}}/course/{{course._id}}/details" class="col-xs-11 large-text">
       {{course.name}}-{{course.sectionNum}}
     </a>
   </li>
