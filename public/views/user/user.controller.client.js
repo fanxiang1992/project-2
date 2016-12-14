@@ -58,7 +58,9 @@
         lastName: user.lastName,
         address: user.address,
         email: user.email
-      }
+      };
+      console.log("controller");
+      console.log(user);
 
       UserService
       .createUser(user)
